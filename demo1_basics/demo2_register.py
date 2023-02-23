@@ -21,3 +21,4 @@ driver.find_element(By.XPATH,"//input[@value='-1']").click()
 ####click on sign up
 driver.find_element(By.NAME,"websubmit").click()
 time.sleep(5)
+driver.quit()
