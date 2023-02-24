@@ -17,11 +17,15 @@ select_jobtitle.select_by_visible_text("Sales Manager")
 driver.find_element(By.NAME,"CompanyName").send_keys("abc")
 select_employee= Select(driver.find_element(By.NAME,"CompanyEmployees"))
 select_employee.select_by_visible_text("501 - 1500 employees")
-driver.find_element(By.NAME,"UserPhone").send_keys("8876788")
+#driver.find_element(By.NAME,"UserPhone").send_keys("8876788")
 select_country=Select(driver.find_element(By.NAME,"CompanyCountry"))
 select_country.select_by_visible_text("Afghanistan")
 driver.find_element(By.CLASS_NAME, "checkbox-ui").click()
 driver.find_element(By.NAME, "start my free trial").click()
+actual_error=driver.find_element(By.XPATH,"//span[contains(text(),'valid phone')]").text
+print(actual_error)
 time.sleep(5)
+driver.quit()
+
 
 
