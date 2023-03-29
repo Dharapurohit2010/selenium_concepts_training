@@ -23,6 +23,22 @@ class TestPetStoreAPI:
         print(response.status_code)
         assert_that(404).is_equal_to(response.status_code)
         assert_that("Pet not found").is_equal_to(response.json()["message"])
+
     def test_find_pet_by_valid_status(self):
+        status = "sold"
+        resource = f"/pet/findByStatus?status={status}"
+        response = requests.get(TestPetStoreAPI.END_POINT + resource)
+        # print(response.status_code)
+        # print(response.json())
+        assert_that(200).is_equal_to(response.status_code)
+        print(response.json())
+        print(response.json()[0])
+        print(len(response.json()))
+        print(response.json()[0]['status'])
+        # validating all pet details received is having status - sold
+        for i in range(0, len(response.json())):
+            print(response.json()[i]['id'])
+            print(response.json()[i]['status'])
+            assert_that(status).is_equal_to(response.json()[i]['status'])
 
 
